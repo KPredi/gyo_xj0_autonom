@@ -1,4 +1,4 @@
-# `ros2_cpp_template` package
+# `gyo_xj0_autonom` package
 ROS 2 C++ package.  [![Static Badge](https://img.shields.io/badge/ROS_2-Humble-34aec5)](https://docs.ros.org/en/humble/)
 ## Packages and build
 

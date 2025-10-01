@@ -1,55 +1,53 @@
+#include <memory>
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float32.hpp"
 
-class Eredmeny : public rclcpp::Node
+class eredmeny : public rclcpp::Node
 {
 public:
-    Eredmeny() : Node("eredmeny"), val1(0.0), val2(0.0)
+    eredmeny() : Node("eredmeny"), val1_received_(false), val2_received_(false)
     {
-        pub = this->create_publisher<std_msgs::msg::Float32>("eredmeny", 10);
-
-        sub1 = this->create_subscription<std_msgs::msg::Float32>(
-            "cotg1", 10,
-            std::bind(&Eredmeny::callback1, this, std::placeholders::_1));
-
-        sub2 = this->create_subscription<std_msgs::msg::Float32>(
-            "cotg2", 10,
-            std::bind(&Eredmeny::callback2, this, std::placeholders::_1));
+        RCLCPP_INFO(this->get_logger(), "kotangens jelek összeadása");
+        pub_ = this->create_publisher<stdmsgs::msg::Float32>("eredmeny", 10);
+        sub1_ = this->create_subscription<std_msgs::msg::Float32>( "cotg1", 10,std::bind(&eredmeny::callback1, this, std::placeholders::_1));
+        sub2_ = this->create_subscription<std_msgs::msg::Float32>("cotg2", 10,std::bind(&eredmeny::callback2, this, std::placeholders::_1));
     }
 
 private:
-    void callback1(const std_msgs::msg::Float32::SharedPtr msg)
-    {
-        val1 = msg->data;
-        publish_sum();
-    }
+    void callback1(const stdmsgs::msg::Float32::SharedPtr msg3)
+        {
+            val1_ = msg3->data;
+            val1_received_ = true;
+            publish_sum();
+        }
 
-    void callback2(const std_msgs::msg::Float32::SharedPtr msg)
-    {
-        val2 = msg->data;
-        publish_sum();
-    }
+    void callback2(const stdmsgs::msg::Float32::SharedPtr msg3)
+        {
+            val2_ = msg3->data;
+            val2_received_ = true;
+            publish_sum();
+        }
 
     void publish_sum()
-    {
-        auto sum_msg = std_msgs::msg::Float32();
-        sum_msg.data = val1 + val2;
-        pub->publish(sum_msg);
+        {
+        if (!val1received || !val2received) return; 
 
-        RCLCPP_INFO(this->get_logger(), "Sum: %.3f", sum_msg.data);
-    }
+            auto sum_msg = std_msgs::msg::Float32();
+            summsg.data = val1_ + val2_;
+            pub->publish(sum_msg);
+        }
 
-    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr pub;
-    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr sub1;
-    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr sub2;
+    rclcpp::Publisher<stdmsgs::msg::Float32>::SharedPtr pub_;
+    rclcpp::Subscription<stdmsgs::msg::Float32>::SharedPtr sub1_, sub2_;
+    float val1_ = 0.0, val2_ = 0.0;
+    bool val1_received_ = false, val2_received_ = false;
 
-    float val1, val2;
 };
 
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<Eredmeny>());
+    rclcpp::spin(std::make_shared<eredmeny>());
     rclcpp::shutdown();
     return 0;
 }

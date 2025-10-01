@@ -9,15 +9,15 @@
 
 using namespace std::chrono_literals;
 
-class szinusz : public rclcpp::Node
+class koszinusz : public rclcpp::Node
 {
 public:
-    szinusz() : Node("jelgen"), count_(0)
+    koszinusz() : Node("generator"), count_(0)
         {
-            RCLCPP_INFO(this->get_logger(), "Szinusz jelek előállítása");
-            pub1_ = this->create_publisher<std_msgs::msg::Float32>("sine1", 10);
-            pub2_ = this->create_publisher<std_msgs::msg::Float32>("sine2", 10);
-            timer_ = this->create_wall_timer(50ms, std::bind(&szinusz::timer_callback, this));
+            RCLCPP_INFO(this->get_logger(), "koszinusz jelek előállítása");
+            pub1_ = this->create_publisher<std_msgs::msg::Float32>("cos1", 10);
+            pub2_ = this->create_publisher<std_msgs::msg::Float32>("cos2", 10);
+            timer_ = this->create_wall_timer(50ms, std::bind(&koszinusz::timer_callback, this));
         }
     
 
@@ -28,8 +28,8 @@ private:
         auto msg2 = std_msgs::msg::Float32();
 
         auto t = count_ * 0.01;
-        msg1.data = sin(t * 2*M_PI*1) * 2;
-        msg2.data = sin(t * 2*M_PI*2) * 0.5;
+        msg1.data = cos(t * 2*M_PI*1) * 2;
+        msg2.data = cos(t * 2*M_PI*2) * 0.5;
 
         pub1_->publish(msg1);
         pub2_->publish(msg2);
@@ -45,7 +45,7 @@ private:
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<szinusz>());
+    rclcpp::spin(std::make_shared<koszinusz>());
     rclcpp::shutdown();
     return 0;
 }

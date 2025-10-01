@@ -2,15 +2,15 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float32.hpp"
 
-class osszeg : public rclcpp::Node
+class eredmeny : public rclcpp::Node
 {
 public:
-    osszeg() : Node("osszeg"), val1_received_(false), val2_received_(false)
+    eredmeny() : Node("eredmeny"), val1_received_(false), val2_received_(false)
     {
-        RCLCPP_INFO(this->get_logger(), "Szinusz jelek összeadása");
-        pub_ = this->create_publisher<std_msgs::msg::Float32>("osszeg", 10);
-        sub1_ = this->create_subscription<std_msgs::msg::Float32>( "sine1", 10,std::bind(&osszeg::callback1, this, std::placeholders::_1));
-        sub2_ = this->create_subscription<std_msgs::msg::Float32>("sine2", 10,std::bind(&osszeg::callback2, this, std::placeholders::_1));
+        RCLCPP_INFO(this->get_logger(), "koszinusz jelek összeadása");
+        pub_ = this->create_publisher<std_msgs::msg::Float32>("eredmeny", 10);
+        sub1_ = this->create_subscription<std_msgs::msg::Float32>( "cos1", 10,std::bind(&eredmeny::callback1, this, std::placeholders::_1));
+        sub2_ = this->create_subscription<std_msgs::msg::Float32>("cos2", 10,std::bind(&eredmeny::callback2, this, std::placeholders::_1));
     }
 
 private:
@@ -47,7 +47,7 @@ private:
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<osszeg>());
+    rclcpp::spin(std::make_shared<eredmeny>());
     rclcpp::shutdown();
     return 0;
 }

@@ -30,7 +30,7 @@ private:
 
     void publish_sum()
         {
-        if (!val1received || !val2received) return; 
+        if (!val1_received_ || !val2_received_) return; 
 
             auto sum_msg = std_msgs::msg::Float32();
             sum_msg.data = val1_ + val2_;

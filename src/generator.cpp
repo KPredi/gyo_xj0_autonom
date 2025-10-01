@@ -15,9 +15,9 @@ public:
     COTG() : Node("jelgen"), count_(0)
         {
             RCLCPP_INFO(this->getlogger(), "Szinusz jelek előállítása");
-            pub1 = this->create_publisher<stdmsgs::msg::Float32>("cotg1", 10);
-            pub2 = this->create_publisher<stdmsgs::msg::Float32>("cotg2", 10);
-            timer = this->create_wall_timer(50ms, std::bind(&COTG::timer_callback, this));
+            pub1_ = this->create_publisher<stdmsgs::msg::Float32>("cotg1", 10);
+            pub2_ = this->create_publisher<stdmsgs::msg::Float32>("cotg2", 10);
+            timer_ = this->create_wall_timer(50ms, std::bind(&COTG::timer_callback, this));
         }
 
 
@@ -31,8 +31,8 @@ private:
         msg1.data = 1.0 / tan(t * 2*M_PI1*1) * 2;;
         msg1.data = 1.0 / tan(t * 2*M_PI2*2) * 0.5;
 
-        pub1->publish(msg1);
-        pub2->publish(msg2);
+        pub1_->publish(msg1);
+        pub2_->publish(msg2);
 
         count_++;
     }

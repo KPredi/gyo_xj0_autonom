@@ -3,8 +3,8 @@
 <package format="3">
   <name>ros2_cpp_template</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="todo@todo.com">TODO:</maintainer>
+  <description>Györe Viktor autonóm házifeledat</description>
+  <maintainer email="gyoreviktor03@gmail.com">TODO:</maintainer>
   <license>GNU General Public License v3.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

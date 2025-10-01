@@ -27,6 +27,9 @@ ament_target_dependencies(generator rclcpp std_msgs)
 add_executable(eredmeny src/eredmeny.cpp)
 ament_target_dependencies(eredmeny rclcpp std_msgs)
 
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME})
+
 install(TARGETS
   generator
   eredmeny

@@ -2,26 +2,26 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float32.hpp"
 
-class eredmeny : public rclcpp::Node
+class eredmenyek : public rclcpp::Node
 {
 public:
-    eredmeny() : Node("eredmeny"), val1_received_(false), val2_received_(false)
+    eredmenyek() : Node("eredmenyek"), val1_received_(false), val2_received_(false)
     {
         RCLCPP_INFO(this->get_logger(), "kotangens jelek összeadása");
-        pub_ = this->create_publisher<stdmsgs::msg::Float32>("eredmeny", 10);
-        sub1_ = this->create_subscription<std_msgs::msg::Float32>( "cotg1", 10,std::bind(&eredmeny::callback1, this, std::placeholders::_1));
-        sub2_ = this->create_subscription<std_msgs::msg::Float32>("cotg2", 10,std::bind(&eredmeny::callback2, this, std::placeholders::_1));
+        pub_ = this->create_publisher<std_msgs::msg::Float32>("eredmenyek", 10);
+        sub1_ = this->create_subscription<std_msgs::msg::Float32>( "cotg1", 10,std::bind(&eredmenyek::callback1, this, std::placeholders::_1));
+        sub2_ = this->create_subscription<std_msgs::msg::Float32>("cotg2", 10,std::bind(&eredmenyek::callback2, this, std::placeholders::_1));
     }
 
 private:
-    void callback1(const stdmsgs::msg::Float32::SharedPtr msg3)
+    void callback1(const std_msgs::msg::Float32::SharedPtr msg3)
         {
             val1_ = msg3->data;
             val1_received_ = true;
             publish_sum();
         }
 
-    void callback2(const stdmsgs::msg::Float32::SharedPtr msg3)
+    void callback2(const std_msgs::msg::Float32::SharedPtr msg3)
         {
             val2_ = msg3->data;
             val2_received_ = true;
@@ -37,8 +37,8 @@ private:
             pub_->publish(sum_msg);
         }
 
-    rclcpp::Publisher<stdmsgs::msg::Float32>::SharedPtr pub_;
-    rclcpp::Subscription<stdmsgs::msg::Float32>::SharedPtr sub1_, sub2_;
+    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr pub_;
+    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr sub1_, sub2_;
     float val1_ = 0.0, val2_ = 0.0;
     bool val1_received_ = false, val2_received_ = false;
 
@@ -47,7 +47,7 @@ private:
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<eredmeny>());
+    rclcpp::spin(std::make_shared<eredmenyek>());
     rclcpp::shutdown();
     return 0;
 }

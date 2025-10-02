@@ -27,17 +27,12 @@ ament_target_dependencies(generator rclcpp std_msgs)
 add_executable(atlagolo src/atlagolo.cpp)
 ament_target_dependencies(atlagolo rclcpp std_msgs)
 
-add_executable(fuggveny src/fuggveny.cpp)
-ament_target_dependencies(fuggveny rclcpp std_msgs)
-
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
 install(TARGETS
   generator
   atlagolo
-  fuggveny
   DESTINATION lib/${PROJECT_NAME})
 
   ament_package()
-  

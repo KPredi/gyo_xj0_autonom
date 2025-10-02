@@ -29,11 +29,12 @@ source ~/ros2_ws/install/setup.bash
 </details>
 
 ``` r
-ros2 launch gyo_xj0_autonom launch_example1.launch.py
+ros2 run gyo_xj0_autonom generator
+ros2 run gyo_xj0_autonom atlagolo
 ```
 ### szimuláció indítása 
 ``` r
 ros2 run rqt_plot rqt_plot
-(/cos1/data)
+(/numbers/data)
 (/cos2/data)
 ```

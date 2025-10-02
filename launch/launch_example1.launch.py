@@ -10,6 +10,6 @@ def generate_launch_description():
 
         Node(
             package='gyo_xj0_autonom',
-            executable='eredmeny',
+            executable='atlagolo',
         ),
     ])

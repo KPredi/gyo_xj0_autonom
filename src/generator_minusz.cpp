@@ -10,7 +10,7 @@ class NumberGenerator : public rclcpp::Node
 {
 public:
     NumberGenerator()
-    : Node("szam_generator_m"), mt(rd()), dist(-100, 0)
+    : Node("szam_generator_m"), mt(rd()), dist(-500, 0)
     {
         publisher_ = this->create_publisher<std_msgs::msg::Int32>("szamok_minusz", 10);
         timer_ = this->create_wall_timer(

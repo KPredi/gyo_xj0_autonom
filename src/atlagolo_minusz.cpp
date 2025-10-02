@@ -22,7 +22,7 @@ private:
     {
         current_batch_.push_back(msg->data);
 
-        if (current_batch_.size() >= 100)
+        if (current_batch_.size() >= 10)
         {
             double avg = std::accumulate(current_batch_.begin(), current_batch_.end(), 0.0) / current_batch_.size();
             RCLCPP_INFO(this->get_logger(), "Batch %d average: %.2f", count_+1, avg);

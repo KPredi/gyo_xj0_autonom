@@ -12,9 +12,9 @@ public:
     : Node("atlagolo"), count_(0)
     {
         subscription_ = this->create_subscription<std_msgs::msg::Int32>(
-            "numbers", 10, std::bind(&Atlagolo::number_callback, this, std::placeholders::_1));
+            "szamok_plusz", 10, std::bind(&Atlagolo::number_callback, this, std::placeholders::_1));
 
-        publisher_ = this->create_publisher<std_msgs::msg::Float64>("averages", 10);
+        publisher_ = this->create_publisher<std_msgs::msg::Float64>("atlag_plusz", 10);
     }
 
 private:

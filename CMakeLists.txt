@@ -30,6 +30,9 @@ ament_target_dependencies(atlagolo rclcpp std_msgs)
 add_executable(generator_minusz src/generator_minusz.cpp)
 ament_target_dependencies(generator_minusz rclcpp std_msgs)
 
+add_executable(atlagolo_minusz src/atlagolo_minusz.cpp)
+ament_target_dependencies(atlagolo_minusz rclcpp std_msgs)
+
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
@@ -37,6 +40,7 @@ install(TARGETS
   generator
   atlagolo
   generator_minusz
+  atlagolo_minusz  
   DESTINATION lib/${PROJECT_NAME})
 
   ament_package()

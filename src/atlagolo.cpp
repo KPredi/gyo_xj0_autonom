@@ -33,12 +33,6 @@ private:
             publisher_->publish(avg_msg);
 
             current_batch_.clear();
-            count_++;
-
-            if (count_ >= 10)
-            {
-                rclcpp::shutdown();
-            }
         }
     }
 

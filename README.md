@@ -39,5 +39,4 @@ ros2 run gyo_xj0_autonom atlagolo_ossz
 ``` r
 ros2 run rqt_plot rqt_plot
 (/numbers/data)
-(
 ```

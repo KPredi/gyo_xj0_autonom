@@ -1,7 +1,7 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
-def generate_launch_description():
+def indito():
     return LaunchDescription([
         # Pluszos generátor
         Node(

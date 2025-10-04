@@ -31,10 +31,13 @@ source ~/ros2_ws/install/setup.bash
 ``` r
 ros2 run gyo_xj0_autonom generator
 ros2 run gyo_xj0_autonom atlagolo
+ros2 run gyo_xj0_autonom generator_minusz
+ros2 run gyo_xj0_autonom atlagolo_minusz
+ros2 run gyo_xj0_autonom atlagolo_ossz
 ```
 ### szimuláció indítása 
 ``` r
 ros2 run rqt_plot rqt_plot
 (/numbers/data)
-(/cos2/data)
+(
 ```

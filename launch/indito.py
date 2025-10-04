@@ -3,43 +3,34 @@ from launch_ros.actions import Node
 
 def indito():
     return LaunchDescription([
-        # Pluszos generátor
         Node(
             package='gyo_xj0_autonom',
             executable='generator',
             name='generator',
             output='screen'
         ),
-
-        # Mínuszos generátor
         Node(
             package='gyo_xj0_autonom',
             executable='generator_minusz',
             name='generator_minusz',
             output='screen'
         ),
-
-        # Pluszos átlagoló
         Node(
             package='gyo_xj0_autonom',
             executable='atlagolo',
             name='atlagolo',
             output='screen'
         ),
-
-        # Mínuszos átlagoló
         Node(
             package='gyo_xj0_autonom',
             executable='atlagolo_minusz',
             name='atlagolo_minusz',
             output='screen'
         ),
-
-        # Átlagok összeadó
         Node(
             package='gyo_xj0_autonom',
-            executable='sum_averages',
-            name='sum_averages',
+            executable='atlagolo_ossz',
+            name='atlagolo_ossz',
             output='screen'
         ),
     ])

@@ -1,7 +1,7 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
-def indito():
+def generate_launch_description():
     return LaunchDescription([
         Node(
             package='gyo_xj0_autonom',

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(gyo_xj0_autonom)
+project(kis_beadando)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -36,8 +36,8 @@ ament_target_dependencies(atlagolo_minusz rclcpp std_msgs)
 add_executable(atlag_ossz src/atlag_ossz.cpp)
 ament_target_dependencies(atlag_ossz rclcpp std_msgs)
 
-add_executable(indito src/indito.py)
-ament_target_dependencies(indito rclcpp std_msgs)
+#add_executable(indito src/indito.py)
+#ament_target_dependencies(indito rclcpp std_msgs)
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
@@ -48,7 +48,7 @@ install(TARGETS
   generator_minusz
   atlagolo_minusz  
   atlag_ossz
-  indito
+  #indito
   DESTINATION lib/${PROJECT_NAME})
 
   install(

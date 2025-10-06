@@ -1,46 +1,23 @@
 # `gyo_xj0_autonom` package
-ROS 2 C++ package.  [![Static Badge](https://img.shields.io/badge/ROS_2-Humble-34aec5)](https://docs.ros.org/en/humble/)
-## Packages and build
 
-It is assumed that the workspace is `~/ros2_ws/`.
+## Kis beadandó
 
-### Clone the packages
-``` r
-cd ~/ros2_ws/src
-```
-``` r
-git clone https://github.com/KPredi/gyo_xj0_autonom
-```
+### Feladat leírása
+Működés:
 
-### Build ROS 2 packages
-``` r
-cd ~/ros2_ws
-```
-``` r
-colcon build --packages-select gyo_xj0_autonom --symlink-install
-```
+A Publisher node-ok:
 
-<details>
-<summary> Don't forget to source before ROS commands.</summary>
+"szam_generator" 0 és 500 közötti véletlen számokat küld a "szamok_plusz" topicra.
 
-``` bash
-source ~/ros2_ws/install/setup.bash
-```
-</details>
+"szam_generator_m" –500 és 0 közötti véletlen számokat küld a "szamok_minusz" topicra.
 
-``` r
-ros2 run gyo_xj0_autonom generator
-ros2 run gyo_xj0_autonom atlagolo
-ros2 run gyo_xj0_autonom generator_minusz
-ros2 run gyo_xj0_autonom atlagolo_minusz
-ros2 run gyo_xj0_autonom atlagolo_ossz
-```
-### szimuláció indítása 
-``` r
-ros2 run rqt_plot rqt_plot
-(/numbers/data)
-```
+A Subscriber node-ok:
 
+"atlagolo" a "szamok_plusz" topicról érkező értékeket 10-esével átlagolja, majd az eredményt az "atlag_plusz" topicra küldi.
+
+"atlagolo_m" a "szamok_minusz" topicról érkező értékeket dolgozza fel ugyanígy, és az "atlag_minusz" topicra küldi az átlagot.
+
+"atlag_ossz" feliratkozik az "atlag_plusz" és "atlag_minusz" topicokra, majd összeadja a két átlagot, és az eredményt az "atlag_ossz" topicra publikálja.
 
 ### Indítás:
 ``` r
@@ -63,4 +40,10 @@ ros2 launch gyo_xj0_autonom indito.py
 ```
 ``` r
 ros2 run rqt_plot rqt_plot
+/szamok_plusz/data
+/szamok_minusz/data
+/atlag_plusz/data
+/atlag_minusz/data
+/atlag_ossz/data
+
 ```

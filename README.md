@@ -40,3 +40,27 @@ ros2 run gyo_xj0_autonom atlagolo_ossz
 ros2 run rqt_plot rqt_plot
 (/numbers/data)
 ```
+
+
+### Indítás:
+``` r
+cd ~/ros2_ws/src
+```
+``` r
+git clone https://github.com/KPredi/gyo_xj0_autonom
+```
+``` r
+cd ~/ros2_ws
+```
+``` r
+colcon build --packages-select gyo_xj0_autonom --symlink-install
+```
+``` r
+source ~/ros2_ws/install/setup.bash
+```
+``` r
+ros2 launch gyo_xj0_autonom indito.py
+```
+``` r
+ros2 run rqt_plot rqt_plot
+```

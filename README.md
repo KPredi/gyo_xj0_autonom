@@ -17,7 +17,9 @@ A Subscriber node-ok:
 
 "atlagolo_m" a "szamok_minusz" topicról érkező értékeket dolgozza fel ugyanígy, és az "atlag_minusz" topicra küldi az átlagot.
 
-"atlag_ossz" feliratkozik az "atlag_plusz" és "atlag_minusz" topicokra, majd összeadja a két átlagot, és az eredményt az "atlag_ossz" topicra publikálja.
+"atlag_ossz" feliratkozik az "atlag_plusz" és "atlag_minusz" topicokra, majd összeadja a két átlagot, és az eredményt az "atlag_ossz" topicra küldi.
+
+![alt text](image.png)
 
 ### Indítás:
 ``` r
